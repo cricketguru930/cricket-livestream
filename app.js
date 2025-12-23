@@ -23,7 +23,6 @@ import { wrapper } from 'axios-cookiejar-support';
 import tough from 'tough-cookie';
 import * as cheerio from 'cheerio';
 import morgan from 'morgan';
-import rateLimit from 'express-rate-limit';
 import { LRUCache } from 'lru-cache';
 import { URL } from 'url';
 
@@ -58,12 +57,6 @@ const THIRD_PARTY_ORIGIN = 'https://app.livetvapi.com';
 
 /* ================== MIDDLEWARE ================== */
 app.use(morgan('dev'));
-app.use(
-    rateLimit({
-        windowMs: 15 * 60 * 1000,
-        max: 200
-    })
-);
 
 // Lightweight CORS for dev/testing. In prod, set allowed origin(s).
 app.use((req, res, next) => {
