@@ -1,0 +1,11 @@
+node_modules
+build
+*.zip
+test.js
+test.html
+index.html
+*.bat
+*.sh
+yarn.lock
+package-lock.json
+backups
