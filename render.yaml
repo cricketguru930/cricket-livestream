@@ -1,0 +1,17 @@
+services:
+  - type: web
+    name: cricket-livestream
+    env: node
+    buildCommand: npm install
+    startCommand: npm start
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        generateValue: true
+      # Optional: Add your custom environment variables here
+      # - key: STREAM_TTL_SEC
+      #   value: 600
+      # - key: UA
+      #   value: your-user-agent-string
+

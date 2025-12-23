@@ -109,6 +109,17 @@ async function cacheDel(eventId) {
     lruCache.delete(key);
 }
 
+/* ================== HEALTH CHECK ================== */
+app.get('/health', (req, res) => {
+    res.status(200).json({
+        status: 'ok',
+        timestamp: new Date().toISOString(),
+        uptime: process.uptime(),
+        cacheSize: lruCache.size,
+        cacheMax: CACHE_MAX_SIZE
+    });
+});
+
 /* ================== COOKIE -> JAR HELPERS ================== */
 
 // Convert array of 'Set-Cookie' strings into jar entries.
