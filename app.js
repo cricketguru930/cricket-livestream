@@ -25,6 +25,8 @@ import * as cheerio from 'cheerio';
 import morgan from 'morgan';
 import { LRUCache } from 'lru-cache';
 import { URL } from 'url';
+import { startKeepAlive } from "./keepAlive.js";
+
 
 const app = express();
 
@@ -620,6 +622,8 @@ app.get('/debug/:eventId', async (req, res) => {
             console.log(`🔥 HLS proxy running on http://localhost:${PORT}`);
             console.log(`▶ Example player: http://localhost:${PORT}/player/{eventId}`);
             console.log(`📦 LRU cache: max ${CACHE_MAX_SIZE} items, TTL ${STREAM_TTL_SEC}s`);
+            startKeepAlive();
+
         });
 
         // Handle server errors
